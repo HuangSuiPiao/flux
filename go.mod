@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/afex/hystrix-go v0.0.0-20180502004556-fa1af6a1f4f5
-	github.com/apache/dubbo-go v1.5.6
+	github.com/apache/dubbo-go v1.5.7
 	github.com/apache/dubbo-go-hessian2 v1.9.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dubbogo/go-zookeeper v1.0.3
@@ -23,7 +23,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-replace (
-	github.com/apache/dubbo-go => github.com/yongjiapro/dubbo-go v1.5.6-rc4
-	github.com/labstack/echo/v4 => github.com/bytepowered/echo/v4 v4.4.1-rc0
-)
+//github.com/apache/dubbo-go => github.com/yongjiapro/dubbo-go v1.5.6-rc4
+replace github.com/labstack/echo/v4 => github.com/bytepowered/echo/v4 v4.4.1-rc0

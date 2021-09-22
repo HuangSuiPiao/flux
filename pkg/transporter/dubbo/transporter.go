@@ -398,9 +398,9 @@ func NewReference(refid string, service *flux.ServiceSpec, config *flux.Configur
 	// 订正 url 地址
 	if service.Url != "" {
 		if hasproto(service.Url) {
-			ref.Url = service.Url
+			ref.URL = service.Url
 		} else {
-			ref.Url = service.Protocol + "://" + service.Url
+			ref.URL = service.Protocol + "://" + service.Url
 		}
 	}
 	ref.Protocol = service.Protocol
