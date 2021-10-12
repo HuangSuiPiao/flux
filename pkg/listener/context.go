@@ -33,6 +33,11 @@ type AdaptWebContext struct {
 	variables map[interface{}]interface{}
 }
 
+func (w *AdaptWebContext) WhitContext(ctx context.Context) context.Context {
+	w.context = ctx
+	return w.Context()
+}
+
 func (w *AdaptWebContext) WebListener() flux.WebListener {
 	return w.listener
 }

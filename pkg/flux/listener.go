@@ -116,6 +116,9 @@ type WebContext interface {
 	// Context 返回请求域的Context
 	Context() context.Context
 
+	// WhitContext 允许修改context
+	WhitContext(context.Context) context.Context
+
 	// Request 返回标准HttpRequest对象
 	Request() *http.Request
 
