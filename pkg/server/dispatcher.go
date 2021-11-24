@@ -108,7 +108,8 @@ func (d *Dispatcher) route(webex flux.WebContext, versions *flux.MVCEndpoint) (e
 	}
 	// check endpoint bindings
 	flux.AssertTrue(endpoint.IsValid(), "<endpoint> must valid when routing")
-	flux.AssertTrue(endpoint.Service.IsValid(), "<endpoint.service> must valid when routing")
+	flux.AssertTrue(endpoint.Service.IsValid(), fmt.Sprintf("<endpoint.service> must valid when routing, interface: %s, method: %s, protocol: %s",
+		endpoint.Service.Interface, endpoint.Service.Method, endpoint.Service.Protocol))
 	ctxw := d.pooled.Get().(flux.Context)
 	defer d.pooled.Put(ctxw)
 	ctxw.(*internal.Context).Reset(webex, &endpoint)
