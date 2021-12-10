@@ -126,6 +126,10 @@ func (d *ZookeeperMetadataDiscovery) OnInit(config *flux.Configuration) error {
 	return nil
 }
 
+func (d *ZookeeperMetadataDiscovery) Retrievers() []*zk.ZookeeperRetriever {
+	return d.retrievers
+}
+
 func (d *ZookeeperMetadataDiscovery) SubscribeEndpoints(ctx context.Context, events chan<- flux.EndpointEvent) error {
 	callback := func(event *remoting.NodeEvent) (err error) {
 		defer func() {

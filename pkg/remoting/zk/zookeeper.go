@@ -95,6 +95,22 @@ func (r *ZookeeperRetriever) Create(path string) error {
 	return err
 }
 
+func (r *ZookeeperRetriever) CreateAndData(path string, data []byte) error {
+	_, err := r.conn.Create(path, data, 0, zk.WorldACL(zk.PermAll))
+	return err
+}
+
+func (r *ZookeeperRetriever) Delete(path string) error {
+	b, stat, err := r.conn.Exists(path)
+	if b && stat != nil {
+		err = r.conn.Delete(path, stat.Version)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func (r *ZookeeperRetriever) AddChildChangedListener(groupId, parentNodePath string, nodeChangedListener remoting.NodeChangedListener) error {
 	if init, err := r.setupListener(groupId, parentNodePath, nodeChangedListener); nil != err {
 		return err
